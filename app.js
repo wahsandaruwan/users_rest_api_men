@@ -2,6 +2,8 @@ const express = require('express')
 
 const app = express()
 
+require('./helpers/mongodb_init')
+
 // Middlewares
 // Functions that execute during the lifecycle of a request to the Express server. And we can check the user authentication here.
 // app.use('/users', () => {
