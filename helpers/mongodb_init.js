@@ -1,7 +1,9 @@
 const mongoose = require('mongoose')
 
+require('dotenv/config')
+
 // Connect to DB
-mongoose.connect('mongodb+srv://admin_user1:KcFZimbSy7r7vw9C@noteapp.ymdkd.mongodb.net/users_rest?retryWrites=true&w=majority').then(() => {
+mongoose.connect(process.env.DB_CON).then(() => {
     console.log('Successfully connected to the DB!')
 }).catch((err) => {
     console.log(err.message)
