@@ -4,15 +4,21 @@ const router = express.Router();
 
 const User = require('../models/User')
 
-// Create routes for users
-router.get('/', (req, res) => {
-    res.send('This is users page')
+// Get all users route
+router.get('/', async (req, res) => {
+    try{
+        const users = await User.find()
+        res.json(users)
+    }catch(err){
+        res.json({message: err})
+    }
 })
 
 // router.get('/premium', (req, res) => {
 //     res.send('These are premium users')
 // })
 
+// Insert user route
 router.post('/', async (req, res) => {
     // Create new user
     // console.log(req.body)
@@ -34,7 +40,7 @@ router.post('/', async (req, res) => {
     try{
         const insertUser = await user.save()
         res.json(insertUser)
-    } catch(err){
+    }catch(err){
         res.json({message: err})
     }
 })
