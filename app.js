@@ -13,7 +13,15 @@ const usersRoute = require('./routes/users')
 //     console.log("Hello this is users end point!")
 // })
 
+// Global middlewares
+app.use(express.json())
+app.use(express.urlencoded({
+    extended: true
+}))
+
 app.use('/users', usersRoute)
+
+
 
 // Basic route
 app.get('/', (req, res) => {

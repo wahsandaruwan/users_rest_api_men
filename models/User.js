@@ -17,7 +17,7 @@ const UserSchema = mongoose.Schema({
     age: Number,
     dob: {
         type: Date,
-        required: true,
+        default: new Date('13.02.1995')
     },
     isMarried: {
         type: Boolean,
