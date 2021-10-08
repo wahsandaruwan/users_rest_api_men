@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-// Define user schema (How this user going look)
+// Define user schema / model (How this user going look)
 const UserSchema = mongoose.Schema({
     firstName: {
         type: String,

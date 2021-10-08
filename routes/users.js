@@ -14,6 +14,26 @@ router.get('/', async (req, res) => {
     }
 })
 
+// Get specific user by id route
+router.get('/:userId', async (req, res) => {
+    try{
+        const user = await User.findById(req.params.userId)
+        res.json(user)
+    }catch(err){
+        res.json({message: err})
+    }
+})
+
+router.get('/search/:name', async (req, res) => {
+    try{
+        const regex = new RegExp(req.params.name, 'i')
+        const users = await User.find({firstName:regex})
+        res.json(users)
+    }catch(err){
+        res.json({message: err})
+    }
+})
+
 // router.get('/premium', (req, res) => {
 //     res.send('These are premium users')
 // })
