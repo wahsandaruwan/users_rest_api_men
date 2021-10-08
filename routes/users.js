@@ -7,8 +7,8 @@ router.get('/', (req, res) => {
     res.send('This is users page')
 })
 
-router.get('/premium', (req, res) => {
-    res.send('These are premium users')
-})
+// router.get('/premium', (req, res) => {
+//     res.send('These are premium users')
+// })
 
 module.exports = router
