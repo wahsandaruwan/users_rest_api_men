@@ -24,10 +24,11 @@ router.get('/:userId', async (req, res) => {
     }
 })
 
-router.get('/search/:name', async (req, res) => {
+// Get users by searching in name and email route
+router.get('/search/:query', async (req, res) => {
     try{
-        const regex = new RegExp(req.params.name, 'i')
-        const users = await User.find({firstName:regex})
+        const regexQuery = new RegExp(req.params.query, 'i')
+        const users = await User.find({$or: [{firstName:regexQuery}, {lastName:regexQuery}, {email:regexQuery}]})
         res.json(users)
     }catch(err){
         res.json({message: err})
