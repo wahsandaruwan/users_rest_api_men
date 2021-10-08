@@ -17,7 +17,7 @@ const UserSchema = mongoose.Schema({
     age: Number,
     dob: {
         type: Date,
-        default: new Date('13.02.1995')
+        default: new Date(+new Date() - 9735*24*60*60*1000)
     },
     isMarried: {
         type: Boolean,
@@ -37,4 +37,5 @@ const UserSchema = mongoose.Schema({
     lastFiveSalaries : [Number]
 })
 
+// Export the schema | Collection name would be the plural of this schema name
 module.exports = mongoose.model('User', UserSchema)

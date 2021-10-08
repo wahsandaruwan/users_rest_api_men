@@ -21,8 +21,6 @@ app.use(express.urlencoded({
 
 app.use('/users', usersRoute)
 
-
-
 // Basic route
 app.get('/', (req, res) => {
     res.send('Hello guys! how are you?')

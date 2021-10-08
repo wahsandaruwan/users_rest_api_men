@@ -15,7 +15,21 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
     // Create new user
-    console.log(req.body)
+    // console.log(req.body)
+    const user = new User({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        age: req.body.age,
+        phone: req.body.phone,
+        lastFiveSalaries: req.body.lastFiveSalaries
+    })
+
+    user.save().then((data) => {
+        res.json(data)
+    }).catch((err) => {
+        res.json({message: err})
+    })
 })
 
 module.exports = router
