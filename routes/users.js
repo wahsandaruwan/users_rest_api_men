@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 //     res.send('These are premium users')
 // })
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
     // Create new user
     // console.log(req.body)
     const user = new User({
@@ -25,11 +25,18 @@ router.post('/', (req, res) => {
         lastFiveSalaries: req.body.lastFiveSalaries
     })
 
-    user.save().then((data) => {
-        res.json(data)
-    }).catch((err) => {
+    // user.save().then((data) => {
+    //     res.json(data)
+    // }).catch((err) => {
+    //     res.json({message: err})
+    // })
+
+    try{
+        const insertUser = await user.save()
+        res.json(insertUser)
+    } catch(err){
         res.json({message: err})
-    })
+    }
 })
 
 module.exports = router
