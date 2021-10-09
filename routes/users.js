@@ -76,4 +76,14 @@ router.delete('/:userId', async (req, res) => {
     }
 })
 
+// Update a specific user route
+router.patch('/:userId', async (req, res) => {
+    try{
+        const updateUser = await User.findByIdAndUpdate(req.params.userId, req.body)
+        res.json(updateUser)
+    }catch(err){
+        res.json({message: err})
+    }
+})
+
 module.exports = router
